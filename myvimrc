@@ -1,0 +1,89 @@
+set nocompatible              " be iMproved
+"execute pathogen#infect()
+"设置文件格式
+set fileformats=unix,dos
+"设置编码方式
+set encoding=utf-8
+set fenc=utf-8
+set fileencodings=cp936,ucs-bom,utf-8
+"syntax on
+"设置缩进
+set shiftwidth=2 softtabstop=2 tabstop=2
+set expandtab
+set autoindent smartindent shiftround
+"显示行号
+set number
+"命令回显
+set showcmd
+set laststatus=2
+set ruler
+filetype off                  " required!
+"设置搜索
+"set hlsearch
+set ignorecase
+set incsearch
+"设置颜色主题
+syntax enable
+set background=dark
+colorscheme solarized
+"禁用方向键
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+"打开文件回到上次关闭的位置
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+"增加%命令支持的配对
+set matchpairs+=<:>
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My bundles here:
+"
+" original repos on GitHub
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+" non-GitHub repos
+""""""""git repo"""""""""""""""
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'scrooloose/nerdtree'
+"Bundle 'Valloric/YouCompleteMe'
+"Bundle 'vim-scripts/AutoClose'
+Bundle 'scrooloose/syntastic'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'altercation/vim-colors-solarized'
+" ...
+""""""""""""YCM""""""""""""""""""""
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_seed_identifiers_with_syntax = 1
+"let g:ycm_confirm_extra_conf = 0
+"""""""""""syntastic""""""""""""
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_cpp_include_dirs = ['/usr/include/']
+"let g:syntastic_cpp_remove_include_errors = 1
+"let g:syntastic_cpp_check_header = 1
+"let g:syntastic_cpp_compiler = 'clang++'
+"let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
+""set error or warning signs
+"let g:syntastic_error_symbol = '✗'
+"let g:syntastic_warning_symbol = '⚠'
+"""whether to show balloons
+"let g:syntastic_enable_balloons = 1
+
+""""""""""""FuzzyFinder""""""""""""""""""""
+map ,, :FufCoverageFile!<CR>
+let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|.(svg|png|s|dot)$'
+let g:fuf_coveragefile_prompt = '=>'
+
+filetype plugin indent on     " required!
