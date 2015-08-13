@@ -5,25 +5,29 @@ set fileformats=unix,dos
 "设置编码方式
 set encoding=utf-8
 set fenc=utf-8
-set fileencodings=cp936,ucs-bom,utf-8
-"syntax on
+set fileencodings=utf-8,cp936,ucs-bom
+syntax on
 "设置缩进
 set shiftwidth=2 softtabstop=2 tabstop=2
 set expandtab
-set autoindent smartindent shiftround
+"设置注释
+set autoindent 
+set smartindent shiftround
 "显示行号
 set number
+"设置状态显示
+set laststatus=2
 "命令回显
 set showcmd
-set laststatus=2
 set ruler
-filetype off                  " required!
+"filetype off                  " required!
 "设置搜索
 "set hlsearch
 set ignorecase
 set incsearch
 "设置颜色主题
 syntax enable
+set t_Co=256
 set background=dark
 colorscheme solarized
 "禁用方向键
@@ -33,8 +37,11 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 "打开文件回到上次关闭的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-"增加%命令支持的配对
-set matchpairs+=<:>
+"增加%支持的配对数量
+set matchpairs+=<:>,':'
+
+"读入c/cpp/java文件时自动打开Taglist
+"autocmd BufReadPost *.h,*.c,*.cpp,*.java exe(":Tlist")
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -53,6 +60,9 @@ Bundle 'tpope/vim-rails.git'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+Bundle 'vim-scripts/taglist.vim'
+Bundle 'othree/xml.vim'
+
 " non-GitHub repos
 """"""""git repo"""""""""""""""
 Bundle 'git://git.wincent.com/command-t.git'
@@ -62,6 +72,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'othree/html5.vim'
+
 " ...
 """"""""""""YCM""""""""""""""""""""
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
@@ -87,3 +99,17 @@ let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(
 let g:fuf_coveragefile_prompt = '=>'
 
 filetype plugin indent on     " required!
+
+
+""""""""""""Taglist""""""""""""""""""""
+let Tlist_Show_One_File = 1         "只显示当前文件的taglist，默认是显示多个
+let Tlist_Exit_OnlyWindow = 1          "如果taglist是最后一个窗口，则退出vim
+let Tlist_Use_Right_Window = 0         "在左侧窗口中显示taglist
+"let Tlist_Auto_Open = 0         "在启动VIM后自动打开taglist窗口
+let Tlist_GainFocus_On_ToggleOpen = 1  "打开taglist时，光标保留在taglist窗口
+let Tlist_Ctags_Cmd='/usr/bin/ctags'  "设置ctags命令的位置
+nnoremap <leader>tl : Tlist<CR>        "设置关闭和打开taglist窗口的快捷键
+
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+nnoremap aa :echo expand('%:p')<CR>
