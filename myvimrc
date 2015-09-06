@@ -108,7 +108,7 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 ""whether to show balloons
 let g:syntastic_enable_balloons = 1
-
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR><CR>
 """"""""""""FuzzyFinder""""""""""""""""""""
 map <leader><leader> :FufCoverageFile!<CR>
 let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|.(svg|png|s|dot)$'
@@ -127,6 +127,6 @@ nnoremap <leader>d :NERDTreeToggle<CR>
 "let Tlist_Ctags_Cmd='/usr/bin/ctags'  "设置ctags命令的位置
 "nnoremap <leader>tl : Tlist<CR>        "设置关闭和打开taglist窗口的快捷键
 
-
-nnoremap aa :echo expand('%:p')<CR>
+filetype plugin indent on     " required!
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 nnoremap aa :echo expand('%:p')<CR>
