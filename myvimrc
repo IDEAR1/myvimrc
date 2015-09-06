@@ -82,6 +82,8 @@ Bundle 'tpope/vim-commentary.git'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown.git' 
 " non-GitHub repos
 """"""""git repo"""""""""""""""
 Bundle 'wincent/command-t'
@@ -92,10 +94,30 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'altercation/vim-colors-solarized'
 """"""""""""YCM""""""""""""""""""""
+"configuration file
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_confirm_extra_conf = 0
+"This option controls for which Vim filetypes should YCM be turned on
+let g:ycm_filetype_whitelist = { '*': 1 }
+"This option controls for which Vim filetypes should YCM be turned off
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1
+      \}
+nnoremap <C-i> : YcmCompleter GoTo<CR>
+nnoremap <F5> : YcmForceCompileAndDiagnostics<CR><CR>
+
+
 """""""""""syntastic""""""""""""
 let g:syntastic_check_on_open = 1
 let g:syntastic_cpp_include_dirs = ['/usr/include/']
@@ -108,7 +130,7 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 ""whether to show balloons
 let g:syntastic_enable_balloons = 1
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR><CR>
+
 """"""""""""FuzzyFinder""""""""""""""""""""
 map <leader><leader> :FufCoverageFile!<CR>
 let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|.(svg|png|s|dot)$'
