@@ -31,10 +31,14 @@ syntax enable
 set background=dark
 colorscheme solarized
 "禁用方向键
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <left> <nop>
+map <right> <nop>
+"禁用backspace
+imap <backspace> <nop>
+cmap <backspace> <nop>
 "搜索时正则表达式
 nnoremap / /\v
 "打开文件回到上次关闭的位置
@@ -112,7 +116,8 @@ let g:ycm_filetype_blacklist = {
       \ 'vimwiki' : 1,
       \ 'pandoc' : 1,
       \ 'infolog' : 1,
-      \ 'mail' : 1
+      \ 'mail' : 1,
+      \ 'java' : 1
       \}
 nnoremap <C-i> : YcmCompleter GoTo<CR>
 nnoremap <F5> : YcmForceCompileAndDiagnostics<CR><CR>
@@ -132,7 +137,7 @@ let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_enable_balloons = 1
 
 """"""""""""FuzzyFinder""""""""""""""""""""
-map <leader><leader> :FufCoverageFile!<CR>
+nnoremap <leader>f :FufCoverageFile!<CR>
 let g:fuf_coveragefile_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|.(svg|png|s|dot)$'
 let g:fuf_coveragefile_prompt = '=>'
 
@@ -150,5 +155,7 @@ nnoremap <leader>d :NERDTreeToggle<CR>
 "nnoremap <leader>tl : Tlist<CR>        "设置关闭和打开taglist窗口的快捷键
 
 filetype plugin indent on     " required!
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-nnoremap aa :echo expand('%:p')<CR>
+
+nnoremap <leader>a :echo expand('%:p')<CR>
+
+autocmd FileType c,cpp,cs,java          setlocal commentstring=//\ %s
