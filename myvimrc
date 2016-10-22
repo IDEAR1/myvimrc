@@ -8,7 +8,7 @@ set fenc=utf-8
 set fileencodings=utf-8,cp936,ucs-bom
 syntax on
 "设置缩进
-set shiftwidth=2 softtabstop=2 tabstop=2
+set shiftwidth=4 softtabstop=4 tabstop=4
 set expandtab
 "设置注释
 set autoindent 
@@ -34,7 +34,6 @@ colorscheme solarized
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
-map <left> <nop>
 map <right> <nop>
 "禁用backspace
 imap <backspace> <nop>
@@ -50,7 +49,7 @@ set whichwrap+=<,>,h,l,[,] " Wrap arrow keys between lines
 
 "读入c/cpp/java文件时自动打开Taglist
 "autocmd BufReadPost *.h,*.c,*.cpp,*.java exe(":Tlist")
-set cursorcolumn
+"set cursorcolumn
 set cursorline
 
 set rtp+=~/.vim/bundle/vundle/
@@ -71,6 +70,9 @@ autocmd BufRead,BufNewFile *.md set spell
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
+" scala
+autocmd BufRead,BufNewFile *.scala set filetype=scala
+
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
@@ -87,7 +89,7 @@ Bundle 'tpope/vim-commentary.git'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'godlygeek/tabular'
-Bundle 'plasticboy/vim-markdown.git' 
+"Bundle 'plasticboy/vim-markdown.git' 
 " non-GitHub repos
 """"""""git repo"""""""""""""""
 Bundle 'wincent/command-t'
@@ -116,8 +118,7 @@ let g:ycm_filetype_blacklist = {
       \ 'vimwiki' : 1,
       \ 'pandoc' : 1,
       \ 'infolog' : 1,
-      \ 'mail' : 1,
-      \ 'java' : 1
+      \ 'mail' : 1
       \}
 nnoremap <C-i> : YcmCompleter GoTo<CR>
 nnoremap <F5> : YcmForceCompileAndDiagnostics<CR><CR>
