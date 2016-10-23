@@ -35,8 +35,6 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
-"禁用backspace
-noremap <backspace> <nop>
 "搜索时正则表达式
 nnoremap / /\v
 "打开文件回到上次关闭的位置
