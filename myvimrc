@@ -31,10 +31,10 @@ syntax enable
 set background=dark
 colorscheme solarized
 "禁用方向键
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+"map <up> <nop>
+"map <down> <nop>
+"map <left> <nop>
+"map <right> <nop>
 "搜索时正则表达式
 nnoremap / /\v
 "打开文件回到上次关闭的位置
@@ -46,8 +46,10 @@ set whichwrap+=<,>,h,l,[,] " Wrap arrow keys between lines
 
 "读入c/cpp/java文件时自动打开Taglist
 "autocmd BufReadPost *.h,*.c,*.cpp,*.java exe(":Tlist")
+
+"光标线，写python等对齐很重要的语言时会用得上
 "set cursorcolumn
-set cursorline
+"set cursorline
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -141,7 +143,31 @@ let g:fuf_coveragefile_prompt = '=>'
 
 """""""""""NERDTree""""""""""""
 "切换显示NERDtree
-nnoremap <leader>d :NERDTreeToggle<CR>
+nnoremap <leader>tt :NERDTreeToggle<CR>
+
+"在NERDtree中找到当前文件的位置
+nnoremap <leader>tf :NERDTreeFind<CR>
+
+"将当前目录设置为NERDTree根节点
+nnoremap <leader>tc :NERDTreeCWD<CR>
+
+" If set to 1 then the CWD is changed when the NERD tree is first loaded to the
+" directory it is initialized in.
+let NERDTreeChDirMode = 1
+
+" This option is used to specify which files the NERD tree should ignore.
+" All files ending in .vim or ~ will be ignored.
+" All dirs ending in ".d" to be ignored and all files ending in ".o" to be ignored.
+let NERDTreeIgnore=['\.vim$', '\~$', '.d$[[dir]]', '.o$[[file]]']
+
+" If this option is set to 1 then the bookmarks table will be displayed.
+let NERDTreeShowBookmarks = 1
+
+" Display line numbers for the NERD tree window.
+let NERDTreeShowLineNumbers=1
+
+" Show the 'Bookmarks' label
+let NERDTreeMinimalUI=1
 
 """"""""""""Taglist""""""""""""""""""""
 "let Tlist_Show_One_File = 1         "只显示当前文件的taglist，默认是显示多个
