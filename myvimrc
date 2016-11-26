@@ -65,7 +65,8 @@ noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '
 
 " md is markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.md set spell
+"autocmd BufRead,BufNewFile *.md set spell
+
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
