@@ -13,5 +13,3 @@ function! Expander()
 
   return "\<CR>"
 endfunction
-
-
