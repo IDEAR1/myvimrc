@@ -172,9 +172,6 @@ let NERDTreeShowBookmarks = 1
 " Display line numbers for the NERD tree window.
 let NERDTreeShowLineNumbers=1
 
-" Show the 'Bookmarks' label
-let NERDTreeMinimalUI=1
-
 """"""""""""Taglist""""""""""""""""""""
 "let Tlist_Show_One_File = 1         "只显示当前文件的taglist，默认是显示多个
 "let Tlist_Exit_OnlyWindow = 1          "如果taglist是最后一个窗口，则退出vim
@@ -187,3 +184,25 @@ let NERDTreeMinimalUI=1
 nnoremap <leader>a :echo expand('%:p')<CR>
 
 autocmd FileType c,cpp,cs,java          setlocal commentstring=//\ %s
+
+""""""""""""Vim-markdown""""""""""""""""""""
+
+" Add the following line to your '.vimrc' to disable the folding configuration:
+let g:vim_markdown_folding_disabled = 1
+
+" Highlight YAML front matter as used by Jekyll or Hugo [7].
+let g:vim_markdown_frontmatter = 1
+
+" gx: open the link under the cursor in the same browser as the standard gx command. 
+" ]]: go to next header. <Plug>Markdown_MoveToNextHeader
+" [[: go to previous header. Contrast with ]c. 
+" ][: go to next sibling header if any. 
+" []: go to previous sibling header if any. 
+" ]c: go to Current header
+" ]u: go to parent header (Up)
+
+""""""""""""delimitMate""""""""""""""""""""
+let b:delimitMate_quotes = "\" '"
+
+""""""""""""常用组合键""""""""""""""""""""
+
