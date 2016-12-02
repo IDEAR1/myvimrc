@@ -8,7 +8,7 @@ set fenc=utf-8
 set fileencodings=utf-8,cp936,ucs-bom
 syntax on
 "设置缩进
-set shiftwidth=4 softtabstop=4 tabstop=4
+set shiftwidth=2 softtabstop=2 tabstop=2
 set expandtab
 "设置注释
 set autoindent 
@@ -54,7 +54,9 @@ set whichwrap+=<,>,h,l,[,] " Wrap arrow keys between lines
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+"将leader键改为逗号
 let mapleader = ','
+
 "分屏窗口切换改键
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -62,6 +64,13 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 "重新加载vimrc
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+" PASTE模式快捷键设置为F2
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+
+" diff时使用竖直分屏
+set diffopt+=vertical
 
 " md is markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
@@ -89,16 +98,18 @@ Plugin 'tpope/vim-commentary.git'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
 Plugin 'godlygeek/tabular'
-"Plugin 'plasticboy/vim-markdown.git' 
+Plugin 'plasticboy/vim-markdown.git' 
 " non-GitHub repos
 """"""""git repo"""""""""""""""
 Plugin 'wincent/command-t'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'vim-scripts/AutoClose'
 Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-powerline'
+"precision color scheme for multiple applications (terminal, vim, etc.)
 Plugin 'altercation/vim-colors-solarized'
+"Vim plugin, provides insert mode auto-completion for quotes, parens, brackets
+Plugin 'Raimondi/delimitMate'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -127,7 +138,6 @@ let g:ycm_filetype_blacklist = {
       \}
 nnoremap <C-i> : YcmCompleter GoTo<CR>
 nnoremap <F5> : YcmForceCompileAndDiagnostics<CR><CR>
-
 
 """""""""""syntastic""""""""""""
 let g:syntastic_check_on_open = 1
