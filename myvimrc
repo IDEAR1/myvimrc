@@ -1,68 +1,99 @@
 set nocompatible              " be iMproved
-"execute pathogen#infect()
-"设置文件格式
+
+" 设置文件格式
 set fileformats=unix,dos
-"设置编码方式
+
+" 设置编码方式
 set encoding=utf-8
 set fenc=utf-8
 set fileencodings=utf-8,cp936,ucs-bom
+
+" 字符色彩
 syntax on
-"设置缩进
-set shiftwidth=2 softtabstop=2 tabstop=2
+
+" 设置缩进
+" Set tabstop to tell vim how many columns a tab counts for.
+set tabstop=4
+" - Set shiftwidth to control how many columns text is indented with
+"    the reindent operations (<< and >>) and automatic C-style indentation
+" - Set softtabstop to control how many columns vim uses when you hit Tab in insert mode. 
+set shiftwidth=4 softtabstop=4
+" When expandtab is set, hitting Tab in insert mode will produce the
+" appropriate number of spaces.
 set expandtab
-"设置注释
+
+" Java/Javascript 1 tab = 4 spaces 
+autocmd Filetype java setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+
+" ruby/scala 1 tab = 2 spaces 
+autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd Filetype scala setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
+" 设置注释
 set autoindent 
 set smartindent shiftround
-"显示行号
+
+" 显示行号
 set number
-"设置状态显示
+
+" 设置状态显示
 set laststatus=2
-"命令回显
+
+" 命令回显
 set showcmd
 set ruler
-"filetype off                  " required!
-"设置搜索
+
+" 设置搜索
 set hlsearch
 set ignorecase
 set incsearch
 nmap <silent> <BS> :nohlsearch<CR>
-"设置颜色主题
+
+" 设置颜色主题
 syntax enable
 set background=dark
 colorscheme solarized
-"禁用方向键
+
+" 禁用方向键
 "map <up> <nop>
 "map <down> <nop>
 "map <left> <nop>
 "map <right> <nop>
-"搜索时正则表达式
+
+" 搜索时正则表达式
 nnoremap / /\v
-"打开文件回到上次关闭的位置
+
+" 打开文件回到上次关闭的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-"增加%命令支持的配对
+
+" 增加%命令支持的配对
 set matchpairs+=<:>
-"移动出当前行
+
+" 移动出当前行
 set whichwrap+=<,>,h,l,[,] " Wrap arrow keys between lines
 
-"读入c/cpp/java文件时自动打开Taglist
+" 读入c/cpp/java文件时自动打开Taglist
 "autocmd BufReadPost *.h,*.c,*.cpp,*.java exe(":Tlist")
 
-"光标线，写python等对齐很重要的语言时会用得上
+" 光标线
 "set cursorcolumn
-"set cursorline
+set cursorline
+autocmd Filetype python setlocal cursorcolumn
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-"将leader键改为逗号
+" 将leader键改为逗号
 let mapleader = ','
 
-"分屏窗口切换改键
+" 分屏窗口切换改键
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-"重新加载vimrc
+
+" 重新加载vimrc
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " PASTE模式快捷键设置为F2
@@ -74,12 +105,14 @@ set diffopt+=vertical
 
 " md is markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+" markdown文件打开拼写检查
 "autocmd BufRead,BufNewFile *.md set spell
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-" scala
+" file type extension
 autocmd BufRead,BufNewFile *.scala set filetype=scala
 
 " let Vundle manage Vundle
