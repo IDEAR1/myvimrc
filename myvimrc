@@ -22,9 +22,10 @@ set shiftwidth=4 softtabstop=4
 " appropriate number of spaces.
 set expandtab
 
-" Java/Javascript 1 tab = 4 spaces 
+" Java/Javascript/python 1 tab = 4 spaces 
 autocmd Filetype java setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd Filetype phthon setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " ruby/scala 1 tab = 2 spaces 
 autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
