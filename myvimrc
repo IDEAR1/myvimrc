@@ -116,6 +116,15 @@ autocmd VimResized * :wincmd =
 " file type extension
 autocmd BufRead,BufNewFile *.scala set filetype=scala
 
+" 自动填充文件头
+autocmd BufNewFile *.py exec ":call SetFileHead()"
+func SetFileHead()
+    if &filetype == 'python'
+        call append(0, '#!/usr/bin/env python2')
+        call append(1, '## -*- coding: utf-8 -*-')
+    endif
+endfunc
+
 " let Vundle manage Vundle
 " required! 
 Plugin 'gmarik/Vundle.vim'
