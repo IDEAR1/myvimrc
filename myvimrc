@@ -135,6 +135,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-commentary.git'
 " vim-scripts repos
