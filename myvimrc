@@ -56,6 +56,10 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+" show spaces/tabs, etc.
+set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<,space:·
+set list
+
 " 禁用方向键
 "map <up> <nop>
 "map <down> <nop>
